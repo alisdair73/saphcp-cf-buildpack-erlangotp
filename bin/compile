@@ -3,6 +3,20 @@
 ##
 # usage: bin/compile <build-dir> <cache-dir>
 
+mkdir openssl
+cd openssl
+curl -O https://www.openssl.org/source/openssl-1.1.0-pre5.tar.gz
+tar zxf openssl-1.1.0-pre5.tar.gz
+cd openssl-1.1.0-pre5
+./config --prefix=/opt/openssl --openssldir=/usr/local/ssl
+make
+make Install
+cd ..
+cd ..
+
+
+
+
 set -e
 bpdir=$(cd $(dirname $(dirname $0)); pwd)
 mkdir -p "$1" "$2"
@@ -15,10 +29,9 @@ if [ -f ${build}/.preferred_otp_version ]; then
     OTP_VERSION=$(cat ${build}/.preferred_otp_version)
 fi
 ver=${OTP_VERSION:=${DEFAULT_OTP_VERSION}}
-#tarball=${ver}.tgz
-tarball="otp_src_18.3.tar.gz"
-#OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-erlang/${tarball}"
-OTP_TARBALL_URL="http://erlang.org/download/${tarball}"
+
+tarball=${ver}.tgz
+OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-erlang/${tarball}"
 
 ERLROOT=${build}/otp
 PROFILE=${build}/.profile.d

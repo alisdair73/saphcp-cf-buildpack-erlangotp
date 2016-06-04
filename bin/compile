@@ -10,7 +10,7 @@ tar zxf openssl-1.1.0-pre5.tar.gz
 cd openssl-1.1.0-pre5
 ./config --prefix=/opt/openssl --openssldir=/usr/local/ssl
 make
-make Install
+make install
 cd ..
 cd ..
 

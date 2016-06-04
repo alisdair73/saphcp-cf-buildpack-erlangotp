@@ -21,7 +21,7 @@ cd otp
 export ERL_TOP=$PWD
 export PATH=$ERL_TOP/bin:$PATH
 ./otp_build autoconf
-./configure --prefix=/opt/erlang/18.3
+./configure --prefix=/app/opt
 make
 make install
 

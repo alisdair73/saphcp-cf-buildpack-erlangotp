@@ -11,6 +11,8 @@ test -z ${build} && exit
 ERLROOT=${build}
 PROFILE=${build}/.profile.d
 
+echo $PORT
+
 echo "-------> Download and Build Erlang/OTP"
 mkdir -p ${ERLROOT}
 cd ${ERLROOT}

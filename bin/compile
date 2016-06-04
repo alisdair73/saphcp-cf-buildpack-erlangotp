@@ -15,8 +15,11 @@ if [ -f ${build}/.preferred_otp_version ]; then
     OTP_VERSION=$(cat ${build}/.preferred_otp_version)
 fi
 ver=${OTP_VERSION:=${DEFAULT_OTP_VERSION}}
-tarball=${ver}.tgz
-OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-erlang/${tarball}"
+#tarball=${ver}.tgz
+tarball="otp_src_18.3.tar.gz"
+#OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-erlang/${tarball}"
+OTP_TARBALL_URL="http://erlang.org/download/${tarball}"
+
 ERLROOT=${build}/otp
 PROFILE=${build}/.profile.d
 
@@ -43,8 +46,6 @@ ${ERLROOT}/Install -minimal /app/otp
 
 PATH=/app/otp/bin:$PATH
 export PATH
-
-export CFLAGS="-DOPENSSL_NO_EC=1"
 
 cd $build
 

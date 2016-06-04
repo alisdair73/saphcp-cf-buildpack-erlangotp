@@ -3,10 +3,8 @@
 ##
 # usage: bin/compile <build-dir> <cache-dir>
 
-
-curl -O http://erlang.org/download/otp_src_18.3.tar.gz
-tar zxf otp_src_18.3
-cd otp_src_18.3
+git clone https://github.com/erlang/otp.git
+cd otp
 ./config
 make
 make install

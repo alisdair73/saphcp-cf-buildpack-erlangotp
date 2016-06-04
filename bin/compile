@@ -44,6 +44,8 @@ ${ERLROOT}/Install -minimal /app/otp
 PATH=/app/otp/bin:$PATH
 export PATH
 
+export CFLAGS="-DOPENSSL_NO_EC=1"
+
 cd $build
 
 if [ ! -e "rebar" ]; then

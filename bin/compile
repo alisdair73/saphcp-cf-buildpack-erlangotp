@@ -11,21 +11,9 @@ test -z ${build} && exit
 ERLROOT=${build}
 PROFILE=${build}/.profile.d
 
-echo "-------> Download and Build Erlang/OTP"
-mkdir -p ${ERLROOT}
-cd ${ERLROOT}
 
-git clone https://github.com/erlang/otp.git
 
-cd otp
-export ERL_TOP=$PWD
-export PATH=$ERL_TOP/bin:$PATH
-./otp_build autoconf
-./configure --prefix=/app/opt
-make
-make install
-
-echo erl -version
+echo $(erl -version)
 
 
 

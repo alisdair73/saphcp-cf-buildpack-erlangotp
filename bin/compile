@@ -26,7 +26,7 @@ export PATH=$ERL_TOP/bin:$PATH
 ./configure --prefix=/app/otp
 make
 
-ln -s ${ERLROOT}/otp /app/otp
+#ln -s ${ERLROOT}/otp /app/otp
 make install
 
 echo $(erl -version)

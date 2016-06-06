@@ -24,9 +24,10 @@ export ERL_TOP=$PWD
 export PATH=$ERL_TOP/bin:$PATH
 ./otp_build autoconf
 ./configure --prefix=/app/otp
-make
 
-#ln -s ${ERLROOT}/otp /app/otp
+ln -s ${ERLROOT}/otp /app/otp
+
+make
 make install
 
 echo $(erl -version)
@@ -35,7 +36,6 @@ echo $(ls -R ${ERLROOT}/otp/bin)
 PATH=/app/otp/bin:$PATH
 export PATH
 
-echo ${build}
 cd $build
 
 if [ ! -e "rebar" ]; then

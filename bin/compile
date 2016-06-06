@@ -23,14 +23,14 @@ cd otp
 export ERL_TOP=$PWD
 export PATH=$ERL_TOP/bin:$PATH
 ./otp_build autoconf
-./configure --prefix=/app/opt
+./configure --prefix=/app/otp
 make
 
-ln -s ${ERLROOT}/opt /app/otp
+ln -s ${ERLROOT}/otp /app/otp
 make install
 
 echo $(erl -version)
-echo $(ls -R ${ERLROOT}/opt/bin)
+echo $(ls -R ${ERLROOT}/otp/bin)
 
 PATH=/app/otp/bin:$PATH
 export PATH

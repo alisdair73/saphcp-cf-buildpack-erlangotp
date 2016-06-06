@@ -54,5 +54,3 @@ if [ -f ${bpdir}/opt/otp.sh ]; then
 fi
 
 echo "-----> Build succeeded"
-
-erl -pa ebin deps/*/ebin -noshell -s hello_erlang

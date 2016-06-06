@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
 
-#echo "--- {}"
-cat << EOF
-
-default_process_types:
-    web: /app/otp/bin/erl -pa ebin deps/*/ebin -noshell -s hello_erlang
-EOF
+echo "--- {}"

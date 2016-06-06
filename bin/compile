@@ -14,7 +14,7 @@ PROFILE=${build}/.profile.d
 echo $PORT
 
 echo "-------> Download and Build Erlang/OTP"
-mkdir -p ${ERLROOT}
+#mkdir -p ${ERLROOT}
 cd ${ERLROOT}
 
 git clone https://github.com/erlang/otp.git
@@ -27,7 +27,7 @@ export PATH=$ERL_TOP/bin:$PATH
 make
 make install
 
-ln -s ${ERLROOT} /app/otp
+ln -s ${ERLROOT}/opt /app/otp
 
 echo $(erl -version)
 PATH=/app/otp/bin:$PATH

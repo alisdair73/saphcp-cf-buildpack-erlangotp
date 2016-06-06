@@ -2,6 +2,8 @@
 # bin/release <build-dir>
 
 #echo "--- {}"
+cat << EOF
 
 default_process_types:
     web: erl -pa ebin deps/*/ebin -noshell -s hello_erlang
+EOF

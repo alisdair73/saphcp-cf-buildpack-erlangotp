@@ -30,9 +30,13 @@ ln -s ${ERLROOT}/opt /app/otp
 make install
 
 echo $(erl -version)
+echo $PATH
+echo ${ERLROOT}
+
 PATH=/app/otp/bin:$PATH
 export PATH
 
+echo ${build}
 cd $build
 
 if [ ! -e "rebar" ]; then

@@ -30,8 +30,7 @@ ln -s ${ERLROOT}/opt /app/otp
 make install
 
 echo $(erl -version)
-echo $PATH
-echo ${ERLROOT}
+echo $(ls -R ${ERLROOT})
 
 PATH=/app/otp/bin:$PATH
 export PATH

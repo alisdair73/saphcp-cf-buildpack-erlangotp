@@ -60,6 +60,7 @@ if [ ${PIPESTATUS[0]} -ne 0 ]; then
 fi
 
 pwd
+which erl
 
 if [ -f ${bpdir}/opt/otp.sh ]; then
   mkdir -p ${PROFILE}

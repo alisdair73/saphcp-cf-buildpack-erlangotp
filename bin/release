@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
 
-echo "--- {}"
+echo "default_process_types:
+  web: /app/otp/bin/erl -pa _build/default/lib/web_server/ebin/ -noshell -eval \"application:start(web_server)\""

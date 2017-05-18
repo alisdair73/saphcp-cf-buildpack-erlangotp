@@ -1,5 +1,3 @@
 export PATH=$PATH:/app/otp/bin:bin:/usr/bin:/bin
-echo "OPT.SH"
-pwd
-ls
+erl -pa _build/default/lib/web_server/ebin/ -noshell -eval "application:start(web_server)"
 

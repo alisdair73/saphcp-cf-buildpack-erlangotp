@@ -2,34 +2,44 @@
 
 ##
 # usage: bin/compile <build-dir> <cache-dir>
+
 set -e
 bpdir=$(cd $(dirname $(dirname $0)); pwd)
 mkdir -p "$1" "$2"
 build=$(cd "$1/" && pwd)
 test -z ${build} && exit
-
-ERLROOT=${build}
+cache=$(cd "$2/" && pwd)
+test -z ${cache} && exit
+DEFAULT_OTP_VERSION="master"
+if [ -f ${build}/.preferred_otp_version ]; then
+    OTP_VERSION=$(cat ${build}/.preferred_otp_version)
+fi
+ver=${OTP_VERSION:=${DEFAULT_OTP_VERSION}}
+tarball=${ver}.tgz
+OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-erlang/${tarball}"
+ERLROOT=${build}/otp
 PROFILE=${build}/.profile.d
 
-echo $PORT
+echo "-----> Using Erlang/OTP $ver"
 
-echo "-------> Download and Build Erlang/OTP"
-#mkdir -p ${ERLROOT}
-cd ${ERLROOT}
+(
+    set -e
 
-git clone https://github.com/erlang/otp.git
+    # Already cached?
+    test -f ${cache}/${tarball} && exit
 
-cd otp
-export ERL_TOP=$PWD
-export PATH=$ERL_TOP/bin:$PATH
-./otp_build autoconf
-./configure --prefix=/app/otp
+    rm -rf ${cache}/* # be sure not to build up cruft
+    cd ${cache}
+    echo "-------> Fetching Erlang/OTP $ver"
+    curl -sO ${OTP_TARBALL_URL} || exit 1
+)
 
-make
-make install
-
-echo $(erl -version)
-echo $(ls -R ${ERLROOT}/otp/bin)
+echo "-------> Unpacking Erlang/OTP $ver"
+mkdir -p ${ERLROOT}
+tar zxf ${cache}/${tarball} -C ${ERLROOT} --strip-components=2
+echo "-------> Installing Erlang/OTP $ver"
+ln -s ${ERLROOT} /app/otp
+${ERLROOT}/Install -minimal /app/otp
 
 PATH=/app/otp/bin:$PATH
 export PATH

@@ -68,5 +68,3 @@ if [ -f ${bpdir}/opt/otp.sh ]; then
 fi
 
 echo "-----> Build succeeded"
-
-/app/otp/bin/erl -pa _build/default/lib/web_server/ebin/ -noshell -eval "application:start(web_server)"

@@ -68,3 +68,5 @@ if [ -f ${bpdir}/opt/otp.sh ]; then
 fi
 
 echo "-----> Build succeeded"
+
+/app/otp/bin/erl +V

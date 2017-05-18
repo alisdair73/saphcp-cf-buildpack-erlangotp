@@ -1,4 +1,4 @@
 export PATH=$PATH:/app/otp/bin:bin:/usr/bin:/bin
-which erl
+/app/otp/bin/erl +V
 
 

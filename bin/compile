@@ -16,9 +16,9 @@ if [ -f ${build}/.preferred_otp_version ]; then
 fi
 ver=${OTP_VERSION:=${DEFAULT_OTP_VERSION}}
 #tarball=${ver}.tgz
-tarball="OTP-10.1.tar.gz"
+tarball="OTP-19.1.tar.gz"
 #OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-erlang/${tarball}"
-OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-elixir/erlang/cedar-14/OTP-10.1.tar.gz"
+OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-elixir/erlang/cedar-14/OTP-19.1.tar.gz"
 
 ERLROOT=${build}/otp
 PROFILE=${build}/.profile.d

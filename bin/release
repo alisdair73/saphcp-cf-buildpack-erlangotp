@@ -1,8 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 # bin/release <build-dir>
 
-require 'yaml'
-
-release_run_command = {}
-release_run_command['default_process_types'] = {'web' =>'_build/default/rel/rest_handler/bin/rest_handler start'}
-puts release_run_command.to_yaml  
+echo "--- {}"

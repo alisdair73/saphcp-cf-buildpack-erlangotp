@@ -16,7 +16,7 @@ if [ -f ${build}/.preferred_otp_version ]; then
 fi
 ver=${OTP_VERSION:=${DEFAULT_OTP_VERSION}}
 tarball=${ver}.tgz
-OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-erlang/runtimes/${tarball}"
+OTP_TARBALL_URL="https://s3.amazonaws.com/heroku-buildpack-erlang/${tarball}"
 ERLROOT=${build}/otp
 PROFILE=${build}/.profile.d
 
@@ -38,8 +38,6 @@ echo "-------> Unpacking Erlang/OTP $ver"
 mkdir -p ${ERLROOT}
 
 tar zxf ${cache}/${tarball} -C ${ERLROOT} --strip-components=2
-
-ls
 
 echo "-------> Installing Erlang/OTP $ver"
 ln -s ${ERLROOT} /app/otp

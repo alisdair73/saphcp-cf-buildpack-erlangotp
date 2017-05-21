@@ -4,5 +4,5 @@
 require 'yaml'
 
 release_run_command = {}
-release_run_command['default_process_types'] = {'web' =>'/app/otp/bin/erl -pa _build/default/lib/web_server/ebin -noshell -eval "application:start(web_server)"'}
+release_run_command['default_process_types'] = {'web' =>'_build/default/rel/rest_handler/bin/rest_handler start'}
 puts release_run_command.to_yaml  

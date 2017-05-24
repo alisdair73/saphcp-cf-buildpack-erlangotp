@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
 
-echo "--- {}"
+#echo "--- {}"
+cat << EOF
+addons: []
+default_process_types:
+  web: _build/default/rel/rest_handler/bin/rest_handler foreground
+EOF
